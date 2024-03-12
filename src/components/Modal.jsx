@@ -3,7 +3,7 @@ import Message from "./Message"
 import CloseModalBtn from "../img/cerrar.svg";
 const Modal = ({setModal,animateModal,setAnimateModal,saveSpends}) => {
 
-    const [message, setMessage] = useState("");
+    const[message, setMessage] = useState("");
     const[name,setName]=useState("");
     const[amount,setAmount]=useState(0);
     const[category,setCategory]=useState("");
@@ -86,7 +86,7 @@ const Modal = ({setModal,animateModal,setAnimateModal,saveSpends}) => {
                 <option value="house">House</option>
                 <option value="miscellaneous">Miscellaneous</option>
                 <option value="health">Health</option>
-                <option value="savings">Savings</option>
+                <option value="entertainment">Entertainment</option>
                 <option value="subscription">Subscription</option>
             </select>
         </div>

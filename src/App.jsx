@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import Header from "./components/Header";
+import Modal from "./components/Modal"
+import ListSpends from "./components/ListSpends"
 import IconNewSpend from "./img/nuevo-gasto.svg"
 //we dont need to put the file name because we named it index
 import { generateId } from "./helpers"
-import Modal from "./components/Modal"
+
 
 function App() {
 
@@ -23,13 +25,15 @@ function App() {
   }
 
   const saveSpends = (spend) => {
-    spend.id = generateId;
+    spend.id = generateId();
+    spend.date=Date.now();
     setSpends([...spends,spend]);
   }
 
 
   return (
-    <div>
+    //this condition is so that the modal is not cut off at the top 
+    <div className={modal ? "fijar":""}>
       <Header
         budget={budget}
         setBudget={setBudget}
@@ -39,11 +43,18 @@ function App() {
       
     {isValidBudget ? (
       //if the budget is not valid it show nothing
-      <div className="nuevo-gasto">
-      <img src={IconNewSpend}
-            alt="Icon new spend"
-            onClick= {handleNewSpend}/>
-      </div>
+      <>
+        <main>
+          <ListSpends
+            spends={spends}
+          />
+        </main>
+        <div className="nuevo-gasto">
+        <img src={IconNewSpend}
+              alt="Icon new spend"
+              onClick= {handleNewSpend}/>
+        </div>
+      </>
     ): null}
 
     {modal ? (
