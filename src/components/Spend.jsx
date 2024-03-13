@@ -1,4 +1,12 @@
 import React from 'react'
+import {LeadingActions,
+        SwipeableList,
+        SwipeableListItem,
+        SwipeAction,
+        TrailingActions
+}from "react-swipeable-list"
+//the css of react-swipeable-list
+import "react-swipeable-list/dist/styles.css"
 import { formatDate } from "../helpers"
 //icons
 import IconSavings from "../img/icono_ahorro.svg"
@@ -20,29 +28,58 @@ const Spend = ({id,spend}) => {
     entertainment:IconEnter,
     subscription:IconSub
   }
+
+  //the () because we send a return component
+  //in the css we modify the styles of this components
+  const leadingActions = () =>(
+    <LeadingActions>
+      <SwipeAction onClick={()=>console.log("")}>
+        Edit
+      </SwipeAction>
+    </LeadingActions>
+
+  )
+
+  const trailingActions = () =>(
+    <TrailingActions>
+      <SwipeAction onClick={()=>console.log("")}>
+        Remove
+      </SwipeAction>
+    </TrailingActions>
+
+  )
+    
   return (
-    <div className="gasto sombra">
-     <div className="contenido-gasto">
-        <img
-          src={dictIcons[spend.category]}
-        />
-        <div className="descripcion-gasto">
-            <p className="categoria">
-                {spend.category}
-            </p>
+    <SwipeableList>
+      <SwipeableListItem
+        leadingActions={leadingActions()}
+        trailingActions={trailingActions()}
+      
+      >
+        <div className="gasto sombra">
+          <div className="contenido-gasto">
+            <img
+              src={dictIcons[spend.category]}
+            />
+            <div className="descripcion-gasto">
+                <p className="categoria">
+                    {spend.category}
+                </p>
 
-            <p className="nombre-gasto">
-                {spend.name}
-            </p>
+                <p className="nombre-gasto">
+                    {spend.name}
+                </p>
 
-            <p className="fecha-gasto">
-              Added on: {" "}
-              <span>{formatDate(spend.date)}</span>
-            </p>
+                <p className="fecha-gasto">
+                  Added on: {" "}
+                  <span>{formatDate(spend.date)}</span>
+                </p>
+            </div>
+          </div>
+        <p className="cantidad-gasto">€{spend.amount}</p>
         </div>
-     </div>
-     <p className="cantidad-gasto">€{spend.amount}</p>
-    </div>
+      </SwipeableListItem>
+    </SwipeableList>
   )
 }
 
