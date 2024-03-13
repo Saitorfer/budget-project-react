@@ -1,6 +1,19 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 
-const ControlBudget = ({budget}) => {
+
+const ControlBudget = ({spends, budget}) => {
+
+    const [available,setAvailable] = useState(0);
+    const [spended,setSpended] = useState(0);
+
+    useEffect(()=>{
+      const totalSpended = spends.reduce( (total, spend ) => spend.amount + total, 0);
+      const totalAvailable = budget - totalSpended;
+
+      setSpended(totalSpended);
+      setAvailable(totalAvailable);
+
+    },[spends])
 
     //format to euros
     const formatBudgetToEuros = (amount) =>{
@@ -20,10 +33,10 @@ const ControlBudget = ({budget}) => {
                 <span>Budget: </span> {formatBudgetToEuros(budget)}
             </p>
             <p>
-                <span>Avaible: </span> {formatBudgetToEuros(0)}
+                <span>Avaible: </span> {formatBudgetToEuros(available)}
             </p>
             <p>
-                <span>Spend: </span> {formatBudgetToEuros(0)}
+                <span>Spended: </span> {formatBudgetToEuros(spended)}
             </p>
       </div>
     </div>

@@ -5,7 +5,7 @@ const Modal = ({setModal,animateModal,setAnimateModal,saveSpends}) => {
 
     const[message, setMessage] = useState("");
     const[name,setName]=useState("");
-    const[amount,setAmount]=useState(0);
+    const[amount,setAmount]=useState("");
     const[category,setCategory]=useState("");
 
 

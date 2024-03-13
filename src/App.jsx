@@ -9,6 +9,7 @@ import { generateId } from "./helpers"
 
 function App() {
 
+
   const [budget,setBudget] = useState(0);
   const [isValidBudget,setIsValidBudget]=useState(false);
   const [modal, setModal] = useState(false);
@@ -27,7 +28,9 @@ function App() {
   const saveSpends = (spend) => {
     spend.id = generateId();
     spend.date=Date.now();
+    console.log(spend)
     setSpends([...spends,spend]);
+    console.log(spends)
   }
 
 
@@ -35,6 +38,7 @@ function App() {
     //this condition is so that the modal is not cut off at the top 
     <div className={modal ? "fijar":""}>
       <Header
+        spends={spends}
         budget={budget}
         setBudget={setBudget}
         isValidBudget={isValidBudget}
