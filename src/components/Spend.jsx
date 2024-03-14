@@ -17,7 +17,7 @@ import IconHealth from "../img/icono_salud.svg"
 import IconEnter from "../img/icono_ocio.svg"
 import IconSub from "../img/icono_suscripciones.svg"
 
-const Spend = ({id,spend}) => {
+const Spend = ({id,spend,setEditSpend,deleteSpend}) => {
   //create a dict of icons to link icons and category
   const dictIcons ={
     savings:IconSavings,
@@ -33,7 +33,7 @@ const Spend = ({id,spend}) => {
   //in the css we modify the styles of this components
   const leadingActions = () =>(
     <LeadingActions>
-      <SwipeAction onClick={()=>console.log("")}>
+      <SwipeAction onClick={ () => setEditSpend(spend) }>
         Edit
       </SwipeAction>
     </LeadingActions>
@@ -42,7 +42,9 @@ const Spend = ({id,spend}) => {
 
   const trailingActions = () =>(
     <TrailingActions>
-      <SwipeAction onClick={()=>console.log("")}>
+      <SwipeAction onClick={ () => deleteSpend(spend.id)}
+      //better delete transition
+      destructive={true} >
         Remove
       </SwipeAction>
     </TrailingActions>
