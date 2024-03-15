@@ -21,16 +21,16 @@ const ListSpends = ({ spends, setEditSpend, deleteSpend, filter, filteredSpends 
           </>
         ) : (
           <>
-          <h2>{spends.length > 0 ? "Spends" : "There is no spends yet"}</h2>
-          {spends.map((spend) => (
-            <Spend
-              key={spend.id}
-              spend={spend}
-              setEditSpend={setEditSpend}
-              deleteSpend={deleteSpend}
-            />
-          ))}
-        </>
+            <h2>{spends.length > 0 ? "Spends" : "There is no spends yet"}</h2>
+            {spends.map((spend) => (
+              <Spend
+                key={spend.id}
+                spend={spend}
+                setEditSpend={setEditSpend}
+                deleteSpend={deleteSpend}
+              />
+            ))}
+          </>
         )
       }
 

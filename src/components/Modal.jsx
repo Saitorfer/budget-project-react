@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react'
 import Message from "./Message"
 import CloseModalBtn from "../img/cerrar.svg";
-const Modal = ({ setModal, animateModal, setAnimateModal, saveSpends, editSpend , setEditSpend}) => {
+const Modal = ({ setModal, animateModal, setAnimateModal, saveSpends, editSpend, setEditSpend }) => {
 
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
-  const [date,setDate]=useState("");
-  const [id,setId] =useState("");
+  const [date, setDate] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     //with this code we know if its a new spend or if we edit one
-    if( Object.keys(editSpend).length > 0 ){
+    if (Object.keys(editSpend).length > 0) {
       setName(editSpend.name);
       setAmount(editSpend.amount);
       setCategory(editSpend.category);

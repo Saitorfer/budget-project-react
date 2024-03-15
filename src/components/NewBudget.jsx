@@ -1,7 +1,7 @@
-import {useState} from "react";
+import { useState } from "react";
 import Message from "./Message"
 
-const NewBudget = ({ budget, setBudget,setIsValidBudget }) => {
+const NewBudget = ({ budget, setBudget, setIsValidBudget }) => {
 
   const [message, setMessage] = useState('');
 
@@ -10,7 +10,7 @@ const NewBudget = ({ budget, setBudget,setIsValidBudget }) => {
     e.preventDefault();
 
     //be sure iits not negative
-    if ( Number(budget) < 0) {
+    if (Number(budget) < 0) {
       setMessage("Not a valid budget");
       setIsValidBudget(false);
       //break the cycle of this function

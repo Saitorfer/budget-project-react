@@ -21,8 +21,8 @@ function App() {
     localStorage.getItem("spends") ? JSON.parse(localStorage.getItem("spends")) : []
   );
   const [editSpend, setEditSpend] = useState([]);
-  const [filter, setFilter]=useState("");
-  const [filteredSpends, setFilteredSpends]=useState([]);
+  const [filter, setFilter] = useState("");
+  const [filteredSpends, setFilteredSpends] = useState([]);
 
   //to know if we edit a spend, open the modal
   useEffect(() => {
@@ -55,8 +55,8 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if(filter){
-      const filteredSpends=spends.filter(spend => spend.category===filter)
+    if (filter) {
+      const filteredSpends = spends.filter(spend => spend.category === filter)
       setFilteredSpends(filteredSpends);
     }
   }, [filter])
