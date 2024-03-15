@@ -10,13 +10,15 @@ import { generateId } from "./helpers"
 function App() {
 
 
-  const [budget,setBudget] = useState(0);
+  const [budget,setBudget] = useState(
+    Number(localStorage.getItem("budget")) ?? 0
+  );
   const [isValidBudget,setIsValidBudget]=useState(false);
   const [modal, setModal] = useState(false);
-
   const[animateModal,setAnimateModal]=useState(false);
-  const[spends,setSpends]=useState([]);
-
+  const[spends,setSpends]=useState(
+    localStorage.getItem("spends") ? JSON.parse(localStorage.getItem("spends")) : []
+  );
   const[editSpend,setEditSpend]=useState([]);
 
   //to know if we edit a spend, open the modal
@@ -30,6 +32,24 @@ function App() {
     }
   },[ editSpend ])
 
+  //localStorage
+  useEffect(() => {
+    localStorage.setItem("budget", budget ?? 0)
+  },[ budget ])
+
+  //localStorage
+  useEffect(() => {
+    localStorage.setItem("spends", JSON.stringify(spends) ?? [])
+  },[ spends ])
+
+  // if in the localmemory there is a budget charge the ControlComponent directly
+  useEffect(() => {
+    const budgetLS=Number(localStorage.getItem("budget")) ?? 0
+
+    if(budgetLS>0){
+      setIsValidBudget(true);
+    }
+  },[ ])
 
   const handleNewSpend = () =>{
     setModal(true);
