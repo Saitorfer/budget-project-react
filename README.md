@@ -3,7 +3,7 @@
 This is a little practise project in react
 I use CSS, vite, Javascript and React.
 
-This project its a Budget Planner:
+This project is a Budget Planner:
 
 <img width="1480" alt="image" src="https://github.com/Saitorfer/budget-project-react/assets/39096665/5fe7ae80-0847-4055-8a90-f877c417b3a0">
 
